@@ -27,10 +27,15 @@ public class Member {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 100)
     private String password;
 
     private LocalDate createdDate;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

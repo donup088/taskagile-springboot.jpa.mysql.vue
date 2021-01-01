@@ -2,6 +2,7 @@ package com.taskagile.dto;
 
 import com.sun.istack.NotNull;
 import com.taskagile.domain.Member;
+import com.taskagile.domain.Role;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class MemberDto {
                 .username(username)
                 .password(password)
                 .email(emailAddress)
+                .role(Role.ROLE_MEMBER)
                 .createdDate(LocalDate.now())
                 .build();
     }

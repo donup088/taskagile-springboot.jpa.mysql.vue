@@ -2,10 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="register-form">
-        <div class="logo-wrapper">
-          <img class="logo" src="/images/logo.png">
-          <div class="tagline">Open source task management tool</div>
-        </div>
+        <Logo/>
         <form @submit.prevent="submitForm">
           <div v-show="errorMessage" class="alert alert-danger failed">{{ errorMessage }}</div>
           <div class="form-group">
@@ -35,29 +32,15 @@
         </form>
       </div>
     </div>
-    <footer class="footer">
-      <span class="copyright">&copy; 2020 TaskAgile.com</span>
-      <ul class="footer-links list-inline float-right">
-        <li class="list-inline-item">
-          <a href="#">About</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="#">Terms of Service</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="#">Privacy Policy</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="https://github.com/donup3/taskagile-springboot.jpa.mysql.vue.git" target="_blank">GitHub</a>
-        </li>
-      </ul>
-    </footer>
+    <PageFooter/>
   </div>
 </template>
 
 <script>
 import { required, email, minLength, maxLength } from 'vuelidate/src/validators'
 import registrationService from '@/service/register'
+import Logo from '@/components/Logo.vue'
+import PageFooter from '@/components/PageFooter.vue'
 
 export default {
   name: 'RegisterPage',
@@ -70,6 +53,10 @@ export default {
       },
       errorMessage: ''
     }
+  },
+  components: {
+    Logo,
+    PageFooter
   },
   validations: {
     form: {
