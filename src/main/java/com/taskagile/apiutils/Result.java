@@ -2,7 +2,8 @@ package com.taskagile.apiutils;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
+
+import static org.springframework.util.Assert.*;
 
 public final class Result {
 
@@ -18,13 +19,13 @@ public final class Result {
     }
 
     public static ResponseEntity<ApiResult> ok(String message) {
-        Assert.hasText(message, "Parameter `message` must not be blank");
+        hasText(message, "Parameter `message` must not be blank");
 
         return ok(ApiResult.message(message));
     }
 
     public static ResponseEntity<ApiResult> ok(ApiResult payload) {
-        Assert.notNull(payload, "Parameter `payload` must not be null");
+        notNull(payload, "Parameter `payload` must not be null");
 
         return ResponseEntity.ok(payload);
     }
