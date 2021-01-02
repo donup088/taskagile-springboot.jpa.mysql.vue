@@ -1,18 +1,12 @@
-// export const user = state => state.user
-export const user = state => { return { name: '동그라미' } }
+export const user = state => state.user
+// export const user = state => { return { name: '동그라미' } }
 
 export const hasBoards = state => {
-  // return state.boards.length > 0
-  return true
+  return state.boards.length > 0
 }
 
 export const personalBoards = state => {
-  // return state.boards.filter(board => board.teamId === 0)
-  return [{
-    id: 1,
-    name: '첫번째 보드',
-    description: '첫번째 보드'
-  }]
+  return state.boards.filter(board => board.teamId === 0)
 }
 
 export const teamBoards = state => {

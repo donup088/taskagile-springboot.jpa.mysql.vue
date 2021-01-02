@@ -12,13 +12,15 @@
           <div class="modal-body">
             <div v-show="errorMessage" class="alert alert-danger failed">{{ errorMessage }}</div>
             <div class="form-group">
-              <input type="text" class="form-control" id="boardNameInput" v-model="board.name" placeholder="Board name" maxlength="128">
+              <input type="text" class="form-control" id="boardNameInput" v-model="board.name" placeholder="Board name"
+                     maxlength="128">
               <div class="field-error" v-if="$v.board.name.$dirty">
                 <div class="error" v-if="!$v.board.name.required">Name is required</div>
               </div>
             </div>
             <div class="form-group">
-              <textarea class="form-control" v-model="board.description" placeholder="Add board description here"></textarea>
+              <textarea class="form-control" v-model="board.description"
+                        placeholder="Add board description here"></textarea>
               <div class="field-error" v-if="$v.board.description.$dirty">
                 <div class="error" v-if="!$v.board.description.required">Description is required</div>
               </div>
@@ -38,6 +40,7 @@
 import $ from 'jquery'
 import { required } from 'vuelidate/lib/validators'
 import boardService from '@/service/boardService'
+
 export default {
   name: 'CreateBoardModal',
   props: ['teamId'],
@@ -76,6 +79,7 @@ export default {
         name: this.board.name,
         description: this.board.description
       }
+      console.log('board: ' + board)
       boardService.create(board).then((createdBoard) => {
         this.$store.dispatch('addBoard', createdBoard)
         this.$emit('created', createdBoard.id)

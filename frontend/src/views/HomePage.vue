@@ -5,7 +5,7 @@
       <div class="boards-section">
         <h2 class="section-title">Personal Boards</h2>
         <div class="boards d-flex align-content-start flex-wrap">
-          <div class="board list-inline-item" v-for="board in personalBoards"
+          <div id="boardList" class="board list-inline-item" v-for="board in personalBoards"
                v-bind:key="board.id" @click="openBoard(board)">
             <h3>{{ board.name }}</h3>
             <p>{{ board.description }}</p>
@@ -128,6 +128,9 @@ export default {
       color: #666;
       text-decoration: underline;
     }
+  }
+  #boardList{
+    margin-bottom: 10px;
   }
 }
 </style>
