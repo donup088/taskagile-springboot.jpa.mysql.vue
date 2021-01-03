@@ -28,11 +28,10 @@ public class Team {
     @OneToMany(mappedBy = "team")
     private List<MemberTeam> memberTeam = new ArrayList<>();
 
-    public static Team createTeam(String name, List<MemberTeam> memberTeam) {
-        Team team = new Team();
-        team.name = name;
+    public static Team createTeam(String name) {
+        Team team =new Team();
+        team.name=name;
         team.createdDate = LocalDate.now();
-        team.memberTeam = memberTeam;
         return team;
     }
 }

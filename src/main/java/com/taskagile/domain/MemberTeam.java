@@ -24,4 +24,21 @@ public class MemberTeam {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    private void setMember(Member member) {
+        this.member = member;
+        member.getMemberTeams().add(this);
+    }
+
+    private void setTeam(Team team) {
+        this.team = team;
+        team.getMemberTeam().add(this);
+    }
+
+    public static MemberTeam createMemberTeam(Member member, Team team) {
+        MemberTeam memberTeam = new MemberTeam();
+        memberTeam.setMember(member);
+        memberTeam.setTeam(team);
+        return memberTeam;
+    }
 }

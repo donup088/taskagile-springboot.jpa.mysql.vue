@@ -2,11 +2,11 @@ package com.taskagile.controller.api;
 
 import com.taskagile.annotation.CurrentUser;
 import com.taskagile.apiutils.ApiResult;
-import com.taskagile.apiutils.CreateBoardResult;
-import com.taskagile.domain.Board;
-import com.taskagile.dto.BoardDto;
+import com.taskagile.apiutils.CreateTeamResult;
+import com.taskagile.domain.Team;
+import com.taskagile.dto.TeamDto;
 import com.taskagile.security.domain.CustomUser;
-import com.taskagile.service.BoardService;
+import com.taskagile.service.TeamService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class BoardApiController {
+public class TeamApiController {
 
-    private final BoardService boardService;
+    private final TeamService teamService;
 
-    @PostMapping("/boards")
-    public ResponseEntity<ApiResult> createBoard(@RequestBody BoardDto boardDto, @CurrentUser CustomUser customUser) {
-        log.info("boardDto: " + boardDto);
-        Board board = boardService.createBoard(boardDto, customUser);
+    @PostMapping("/teams")
+    public ResponseEntity<ApiResult> create(@RequestBody TeamDto teamDto, @CurrentUser CustomUser customUser) {
+        log.info("teamDto: " + teamDto);
+        Team team = teamService.createTeam(teamDto, customUser);
 
-        return CreateBoardResult.build(board);
+        return CreateTeamResult.build(team);
     }
 }

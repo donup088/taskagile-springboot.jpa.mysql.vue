@@ -79,7 +79,6 @@ export default {
         name: this.board.name,
         description: this.board.description
       }
-      console.log('board: ' + board)
       boardService.create(board).then((createdBoard) => {
         this.$store.dispatch('addBoard', createdBoard)
         this.$emit('created', createdBoard.id)

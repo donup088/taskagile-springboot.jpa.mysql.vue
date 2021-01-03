@@ -25,6 +25,7 @@ public class MyDataResult {
 
         List<BoardResult> boardResults = new ArrayList<>();
         for (Board board : boards) {
+
             boardResults.add(new BoardResult(board));
         }
 

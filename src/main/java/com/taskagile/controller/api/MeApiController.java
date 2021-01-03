@@ -5,6 +5,7 @@ import com.taskagile.apiutils.ApiResult;
 import com.taskagile.apiutils.MyDataResult;
 import com.taskagile.domain.Board;
 import com.taskagile.domain.Team;
+import com.taskagile.dto.TeamDto;
 import com.taskagile.security.domain.CustomUser;
 import com.taskagile.service.MeService;
 import lombok.RequiredArgsConstructor;
@@ -25,11 +26,11 @@ public class MeApiController {
 
     private final MeService meService;
 
-
     @GetMapping("/me")
     public ResponseEntity<ApiResult> getMyData(@CurrentUser CustomUser customUser) {
         List<Board> boards = meService.getBoard(customUser);
-        List<Team> teams = new ArrayList<>();
+        List<Team> teams = meService.getTeam(customUser);
+
         return MyDataResult.build(customUser, teams, boards);
     }
 }
